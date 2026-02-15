@@ -19,6 +19,7 @@ int main() {
 	   }
 	printf("Number of students correct in question 1 = %d\n",
        countCorrectQ1(ans, 8));
+    printf("Hardest question is no = %d\n", hardestQuestion(ans, 8));
     return 0;
 }
 
@@ -41,4 +42,21 @@ int countCorrectQ1(char ans[][10],int students){
             count++;
     }
     return count;
+}
+int hardestQuestion(char ans[][10],int students){
+    int i,j;
+    int minCorrect=students;
+    int hardest=0;
+    for(j=0;j<10;j++){   
+        int count=0;
+        for(i=0;i<students; i++){ 
+            if(ans[i][j]==charkeys[j])
+                count++;
+        }
+        if(count<minCorrect){
+            minCorrect=count;
+            hardest=j;
+        }
+    }
+    return hardest+1; 
 }
